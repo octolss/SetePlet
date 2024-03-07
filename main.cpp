@@ -2,6 +2,7 @@
 #include <cstring>
 #include <unistd.h>
 #include <netinet/in.h>
+#include <string>
 using namespace std;
 
 #define SOCKET_OPENING_ERROR -1
@@ -11,6 +12,7 @@ using namespace std;
 const int PORT = 8888;
 
 int main(){
+
     int server_fd;
     int new_socket;
 
@@ -19,15 +21,15 @@ int main(){
     struct sockaddr_in address;
     int addrlen = sizeof(address);
 
-    char *hello = "Пацаны, да я в 7-ом классе, отвечаю!";
-
     server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if(server_fd==0){
        cout << "Я ХААААЙ БАЛЯЯ, not working!!!\n" << endl;
         cout << "Socket failure!!!\n" << endl;
         exit(SOCKET_OPENING_ERROR);
     }
-
+    string hello;
+    cout << "Enter your message: ";
+    cin >> hello;
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;
     address.sin_port = htons(PORT);
@@ -63,10 +65,13 @@ int main(){
         if (valread > 0){
             cout << "Message is received: " << buffer << endl;
         }
-        write(new_socket, hello, strlen(hello));
+        string hello;
+        cout << "Enter your message: ";
+        cin >> hello;
+        write(new_socket, hello.c_str(), hello.length());
         cout << "Hello message sent " << endl;
         close(new_socket);
     }   
-
+    
     return 0;
 }

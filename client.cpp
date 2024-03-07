@@ -10,7 +10,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     
-    if (argc > 1) {
+    while(true){if (argc > 1) {
         PORT = atoi(argv[1]);
     }
 
@@ -43,9 +43,9 @@ int main(int argc, char *argv[]) {
     }
 
     send(sock, hello, strlen(hello), 0);
-    cout << "Hello message sent" << endl;
+    cout << hello << " message sent" << endl;
     valread = read(sock, buffer, 1024);
-    cout << "Message Received: " << buffer << endl;
+    cout << "Message Received: " << buffer << endl;}
 
     return 0;
 }
