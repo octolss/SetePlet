@@ -70,7 +70,7 @@ int main(){
         cin >> hello;
         write(new_socket, hello.c_str(), hello.length());
         cout << "Hello message sent " << endl;
-        close(new_socket);
+        //close(new_socket);
     }   
     
     return 0;

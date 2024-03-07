@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 
     send(sock, hello, strlen(hello), 0);
     cout << hello << " message sent" << endl;
-    valread = read(sock, buffer, 1024);
+    read(sock, buffer, 1024);
     cout << "Message Received: " << buffer << endl;}
 
     return 0;
