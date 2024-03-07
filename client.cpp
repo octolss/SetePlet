@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     long valread;
     struct sockaddr_in serv_address;
     int addrlen = sizeof(serv_address);
-    char *hello;
+    char hello[1024];
     cout << "Enter your message: ";
     cin >> hello;
 
@@ -44,8 +44,10 @@ int main(int argc, char *argv[]) {
 
     send(sock, hello, strlen(hello), 0);
     cout << hello << " message sent" << endl;
-    read(sock, buffer, 1024);
-    cout << "Message Received: " << buffer << endl;}
+    
+    valread = read(sock, buffer, 1024);
+    cout << "Message Received: " << buffer << endl;
+    }
 
     return 0;
 }
